@@ -112,6 +112,8 @@ class _TaskDetailPageState extends State<TaskDetailPage> {
                 controller: _titleController,
                 labelText: 'Title',
                 hintText: "eg: Buy groceries",
+                maxLength: 50,
+                showCounter: false,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
                     return 'Please enter a task title';
