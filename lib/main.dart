@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'feature/todo_list/presentation/bloc/task_bloc.dart';
 import 'feature/todo_list/presentation/bloc/task_event.dart';
 import 'feature/todo_list/presentation/pages/home_page.dart';
-import 'service_locator.dart' as di;
+import 'core/di/service_locator.dart' as di;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
