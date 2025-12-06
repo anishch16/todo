@@ -1,28 +1,36 @@
-# Assessment round task
+# TODO APP
 
-This is a modern and lightweight Todo List application built with Flutter, following Clean Architecture principles. It ensures a maintainable codebase by clearly separating the presentation, domain, and data layers. The app includes essential features such as task creation, filtering, updating, deletion, local persistence, and a responsive UI optimized for both mobile and tablet devices.
+This is a modern and lightweight Todo List application built with Flutter, following strict Clean Architecture principles. It ensures a highly maintainable and testable codebase by clearly separating the presentation, domain, and data layers. 
+
+The app includes essential features such as:
+
+- Task Creation, Filtering, Updating, and Deletion
+
+- Fast, Local Persistence (using Hive)
+
+- Responsive UI optimized for both mobile and tablet devices.
 
 # Architecture
 
 ## Clean Architecture
 
-Enforces separation of concerns and direction of dependencies.
+Enforces strict separation of concerns and a clear direction of dependencies (Presentation, Domain, Data), leading to a testable and scalable system.
 
 ## BLoC
 
-Manages state by converting UI Events into business logic and emitting new States.
+Manages state by converting UI Events into business logic and emitting new States, keeping the UI layer purely declarative.
 
 ## Hive
 
-Used for fast, local, and persistent storage of Task data.
+Used for fast, local, and persistent storage of Task data, offering excellent performance for mobile applications.
 
 ## dartz (Either)
 
-Provides explicit Error Handling by representing results as Either<Failure, Success>.
+Provides explicit and robust Error Handling by representing all potential results as ```Either<Failure, Success>```, eliminating null-checks for errors.
 
 ## GetIt
 
-Used as a Service Locator for dependency injection (DI).
+Used as a Service Locator for simple and effective dependency injection (DI), centralizing dependency management.
 
 # Follow these steps to set up and run the application locally.
 
@@ -55,12 +63,12 @@ Used as a Service Locator for dependency injection (DI).
 
 ### Explicit Error Handling
 
-All Repository and Use Case methods return Either from dartz, forcing developers to explicitly handle success and failure paths.
+All Repository and Use Case methods are strongly typed to return ```Either``` from ```dartz```, forcing developers to explicitly handle both success and failure paths at the Presentation layer. This prevents runtime errors from unhandled exceptions.
 
 ### Encapsulated Logic
 
-Complex filtering and sorting logic (by Due Date, then Creation Date) is fully isolated in the GetFilteredTasks Use Case, keeping the BLoC thin.
+Complex filtering and sorting logic (by Due Date, then Creation Date) is fully isolated within the GetFilteredTasks Use Case. This design choice keeps the BLoC thin and makes the core business logic independently testable.
 
 ### Dependency Injection
 
-GetIt is used throughout the ```core/di/service_locator.dart``` to manage dependencies, making it simple to swap out implementations (e.g., change the local data source).
+GetIt is used consistently throughout the ```core/di/service_locator.dart``` to manage dependencies. This central configuration makes it simple and low-effort to swap out implementations (e.g., changing the local data source from Hive to $\text{sqflite}$ or a remote API).
