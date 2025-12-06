@@ -70,7 +70,7 @@ class TaskListItem extends StatelessWidget {
                         task.description!.isNotEmpty)
                       Text(
                         task.description!,
-                        maxLines: 5,
+                        maxLines: 15,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.justify,
                         style: const TextStyle(fontSize: 16),
